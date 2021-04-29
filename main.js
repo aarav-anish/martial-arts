@@ -20,6 +20,18 @@ let loadImages = (callback) => {
   });
 };
 
+let animate = (ctx, images, callback) => {
+  images.forEach((image, index) => {
+    setTimeout(() => {
+      ctx.clearRect(0, 0, 500, 500);
+      ctx.drawImage(image, 10, 10, 500, 500);
+    }, index * 100);
+  });
+  setTimeout(callback, images.length * 100);
+};
+
 loadImages((images) => {
-  ctx.drawImage(images[3], 10, 10, 500, 500);
+  animate(ctx, images, () => {
+    console.log("Done");
+  });
 });
