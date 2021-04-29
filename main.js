@@ -8,6 +8,18 @@ let loadImage = (src, callback) => {
   image.src = src;
 };
 
-loadImage("images/5.png", (image) => {
-  ctx.drawImage(image, 10, 10, 500, 500);
+let loadImages = (callback) => {
+  let images = [];
+
+  [1, 2, 3, 4, 5, 6, 7, 8].forEach((frameNumber) => {
+    let path = "images/" + frameNumber + ".png";
+    loadImage(path, (image) => {
+      images[frameNumber - 1] = image;
+      frameNumber === 8 && callback(images);
+    });
+  });
+};
+
+loadImages((images) => {
+  ctx.drawImage(images[3], 10, 10, 500, 500);
 });
