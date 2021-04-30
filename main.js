@@ -9,6 +9,9 @@ let loadImage = (src, callback) => {
 };
 
 let frames = {
+  backward: [1, 2, 3, 4, 5, 6],
+  block: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  forward: [1, 2, 3, 4, 5, 6],
   idle: [1, 2, 3, 4, 5, 6, 7, 8],
   kick: [1, 2, 3, 4, 5, 6, 7],
   punch: [1, 2, 3, 4, 5, 6, 7],
@@ -19,23 +22,32 @@ let imagePath = (animation, frameNumber) => {
 };
 
 let loadImages = (callback) => {
-  let images = { idle: [], kick: [], punch: [] };
+  let images = {
+    backward: [],
+    block: [],
+    forward: [],
+    idle: [],
+    kick: [],
+    punch: [],
+  };
   let imagesToLoad = 0;
 
-  ["idle", "kick", "punch"].forEach((animation) => {
-    let animationFrames = frames[animation];
-    imagesToLoad += animationFrames.length;
+  ["backward", "block", "forward", "idle", "kick", "punch"].forEach(
+    (animation) => {
+      let animationFrames = frames[animation];
+      imagesToLoad += animationFrames.length;
 
-    animationFrames.forEach((frameNumber) => {
-      let path = imagePath(animation, frameNumber);
+      animationFrames.forEach((frameNumber) => {
+        let path = imagePath(animation, frameNumber);
 
-      loadImage(path, (image) => {
-        images[animation][frameNumber - 1] = image;
-        imagesToLoad--;
-        imagesToLoad === 0 && callback(images);
+        loadImage(path, (image) => {
+          images[animation][frameNumber - 1] = image;
+          imagesToLoad--;
+          imagesToLoad === 0 && callback(images);
+        });
       });
-    });
-  });
+    }
+  );
 };
 
 let animate = (ctx, images, animation, callback) => {
@@ -57,6 +69,15 @@ loadImages((images) => {
     animate(ctx, images, selectedAnimation, aux);
   };
 
+  document.getElementById("backward").onclick = () => {
+    queuedAnimation.push("backward");
+  };
+  document.getElementById("block").onclick = () => {
+    queuedAnimation.push("block");
+  };
+  document.getElementById("forward").onclick = () => {
+    queuedAnimation.push("forward");
+  };
   document.getElementById("kick").onclick = () => {
     queuedAnimation.push("kick");
   };
@@ -73,6 +94,12 @@ loadImages((images) => {
         break;
       case "ArrowRight":
         queuedAnimation.push("punch");
+        break;
+      case "ArrowUp":
+        queuedAnimation.push("forward");
+        break;
+      case "ArrowDown":
+        queuedAnimation.push("backward");
         break;
     }
   });

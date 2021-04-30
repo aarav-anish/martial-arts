@@ -1,3 +1,11 @@
-#canvas {
-  border: 2px solid red;
+body {
+  background-image: url("images/background.jpg");
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
 }
