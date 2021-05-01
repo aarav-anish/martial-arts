@@ -90,16 +90,16 @@ loadImages((images) => {
     const key = event.key; // "ArrowRight", "ArrowLeft", "ArrowUp", or "ArrowDown"
     switch (event.key) {
       case "ArrowLeft":
-        queuedAnimation.push("kick");
+        queuedAnimation.push("backward");
         break;
       case "ArrowRight":
-        queuedAnimation.push("punch");
-        break;
-      case "ArrowUp":
         queuedAnimation.push("forward");
         break;
+      case "ArrowUp":
+        queuedAnimation.push("kick");
+        break;
       case "ArrowDown":
-        queuedAnimation.push("backward");
+        queuedAnimation.push("punch");
         break;
     }
   });

@@ -4,19 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Martial Arts</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://kit.fontawesome.com/2276707e1d.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <h1>Martial Arts</h1>
-    <canvas id="canvas" width="500" height="500"></canvas>
-    <button id="kick">Kick (Left Arrow Key)</button>
-    <button id="punch">Punch (Right Arrow Key)</button>
-    <button id="forward">Forward (Up Arrow Key)</button>
-    <button id="backward">Backward (Down Arrow Key)</button>
-    <button id="block">Block</button>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <canvas id="canvas" width="500" height="500"></canvas>
+      </div>
+      <div class="col-lg-6 animation">
+        <button id="kick" class="btn btn-success">
+          <i class="fas fa-arrow-circle-up"></i> Kick
+        </button>
+        <div>
+          <button id="backward" class="btn btn-warning">
+            <i class="fas fa-arrow-circle-left"></i> Backward
+          </button>
+          <button id="block" class="btn btn-danger">
+            <i class="fas fa-compress-arrows-alt"></i> Block
+          </button>
+          <button id="forward" class="btn btn-warning">
+            Forward <i class="fas fa-arrow-circle-right"></i>
+          </button>
+        </div>
+        <button id="punch" class="btn btn-success">
+          <i class="fas fa-arrow-circle-down"></i> Punch
+        </button>
+      </div>
+    </div>
     <script src="main.js"></script>
     <footer>
-      <p>Made with 🧡 by Anish Kumar Barnwal</p>
+      <p>Made with ❤️ by Anish Kumar Barnwal</p>
     </footer>
   </body>
 </html>
